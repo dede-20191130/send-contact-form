@@ -1,0 +1,17 @@
+@startuml use-case
+left to right direction
+
+:User: as user
+:Script: as scp
+
+rectangle browser { 
+    user -- (情報の入力)
+    user --(テキストの作成) 
+    scp -- (テキストの取得) 
+}
+
+' user -- info
+' user -- get
+' scp -- crt
+
+@enduml
