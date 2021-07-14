@@ -5,9 +5,10 @@ left to right direction
 :Script: as scp
 
 rectangle browser { 
-    user -- (情報の入力)
-    user --(テキストの作成) 
-    scp -- (テキストの取得) 
+    user -- (1. 情報の入力)
+    user -- (2. フォームの送信)
+    scp --(3. テキストの作成) 
+    user -- (4. テキストの取得) 
 }
 
 ' user -- info
