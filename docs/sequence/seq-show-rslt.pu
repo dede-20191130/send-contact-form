@@ -1,0 +1,21 @@
+@startuml show-result
+title show-result-sequence
+actor User
+control 結果表示画面 as shw
+
+[o->> shw:フォーム画面からデータ受理
+activate shw
+create entity 送信内容テキスト as txt
+shw-> txt:（疑似）送信した内容の\nテキストFileの作成
+shw-> shw:（疑似）送信結果の表示
+deactivate shw
+User-> shw:テキストのダウンロード
+activate shw
+shw-> txt:テキストのダウンロード
+activate txt
+deactivate txt
+deactivate shw
+
+
+
+@enduml
