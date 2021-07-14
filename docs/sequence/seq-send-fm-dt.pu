@@ -1,0 +1,23 @@
+@startuml send-sequence
+title send-sequence
+actor User
+control フォーム画面 as fm
+
+User -> fm:情報の入力
+activate User
+activate fm
+create entity 入力情報 as info
+fm -> info:情報の入力
+deactivate fm
+User -> fm:フォームの送信
+activate fm
+fm -> info:入力情報の取得
+activate info
+info --> fm
+deactivate info
+fm -> fm:情報のバリデーションチェック
+fm ->>o]:結果表示画面にデータ送信
+
+
+
+@enduml
