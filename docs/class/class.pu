@@ -1,0 +1,50 @@
+
+@startuml class diagram
+class "フォーム画面" as fmSc{
+    Object errorMessages
+    void anonymous():初期化処理
+}
+class "FormView" as fv{
+    HTMLElement name
+    HTMLElement gender
+    HTMLElement age
+    HTMLElement address
+    HTMLElement message
+    HTMLElement errArea
+    FormView(name,gender,age,address,message,errArea)
+    void onSubmit()
+}
+class "FormController" as fc{
+    void onSubmit()
+    void setData(name,gender,age,address,message)
+    boolean isvalid()
+    String getSerializedData()
+}
+class "FormModel" as fm{
+    String name
+    int gender
+    int age
+    String address
+    String message
+    boolean isvalid"fieldName"(field)
+    String createSerializedData()
+}
+class "結果表示画面" as rsltSc{
+    void anonymous():初期化処理
+}
+class "テキスト作成モジュール" as crtTxt{
+    String getText(serializedData)
+    void setLink(element)
+}
+
+fmSc "1" o-- "1" fv  : 初期化処理でインスタンス化
+fv "1" -- "1" fc  : 相互参照
+fc "1" o-- "1" fm  : contains
+
+fmSc  -  rsltSc : 画面遷移
+rsltSc  o-- crtTxt   : contains
+
+
+
+
+@enduml
