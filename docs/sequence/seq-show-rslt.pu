@@ -1,7 +1,7 @@
 @startuml show-result
 title show-result-sequence
 actor User
-control 結果表示画面 as shw
+control "結果表示画面\n(モーダル画面)" as shw
 
 [o->> shw:フォーム画面からデータ受理
 activate shw

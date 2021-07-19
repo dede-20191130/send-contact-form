@@ -16,7 +16,7 @@ activate info
 info --> fm
 deactivate info
 fm -> fm:情報のバリデーションチェック
-fm ->>o]:結果表示画面にデータ送信
+fm ->>o]:結果表示画面\n（モーダル画面）にデータ送信
 
 
 

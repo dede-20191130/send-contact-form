@@ -41,7 +41,7 @@ fmSc "1" o-- "1" fv  : 初期化処理でインスタンス化
 fv "1" -- "1" fc  : 相互参照
 fc "1" o-- "1" fm  : contains
 
-fmSc  -  rsltSc : 画面遷移
+fmSc  -  rsltSc : モーダル画面表示
 rsltSc  o-- crtTxt   : contains
 
 
