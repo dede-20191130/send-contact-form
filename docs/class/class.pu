@@ -10,8 +10,10 @@ class "FormView" as fv{
     HTMLElement age
     HTMLElement address
     HTMLElement message
+    HTMLElement submitBtn
     HTMLElement errArea
-    FormView(name,gender,age,address,message,errArea)
+    FormView(name,gender,age,\naddress,message,submitBtn,errArea)
+    void setSubmitEvt(elem)
     void onSubmit()
 }
 class "FormController" as fc{
