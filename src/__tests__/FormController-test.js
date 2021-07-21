@@ -1,10 +1,12 @@
 import { FormController } from "../src/FormController";
+import { FormModel } from "../src/FormModel";
 import formErrorMessages from "../src/FormErrorMessages";
 
 let formController;
 
 it('isvalid method should scan all props', () => {
     formController = new FormController({});
+    formController._formModel = new FormModel({});
     formController._formModel.isvalid = {
         name: jest.fn(),
         gender: jest.fn(),
@@ -32,15 +34,15 @@ it('set error showing area.', () => {
     formController = new FormController({ formView: fv });
 
     formController.setError(["name"]);
-    let expected = formErrorMessages["name"] + "\n"
-    expect(fv.errArea.textContent).toBe(expected);
+    let expected = formErrorMessages["name"] + "<br>"
+    expect(fv.errArea.innerHTML).toBe(expected);
 
     formController.setError(["name", "gender", "age", "address", "message"]);
-    expected = formErrorMessages["name"] + "\n" +
-        formErrorMessages["gender"] + "\n" +
-        formErrorMessages["age"] + "\n" +
-        formErrorMessages["address"] + "\n" +
-        formErrorMessages["message"] + "\n"
-    expect(fv.errArea.textContent).toBe(expected);
+    expected = formErrorMessages["name"] + "<br>" +
+        formErrorMessages["gender"] + "<br>" +
+        formErrorMessages["age"] + "<br>" +
+        formErrorMessages["address"] + "<br>" +
+        formErrorMessages["message"] + "<br>"
+    expect(fv.errArea.innerHTML).toBe(expected);
 
 });

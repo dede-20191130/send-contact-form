@@ -12,11 +12,13 @@ export class FormModel {
             },
             gender: () => {
                 const alloweds = [0, 1, 2];
-                return alloweds.includes(this._gender);
+                return alloweds.includes(Number(this._gender));
 
             },
             age: () => {
-                return Number.isInteger(this._age) && (this._age > -1);
+                if (!this._age.trim().length) return false;
+                const age = Number(this._age);
+                return Number.isInteger(age) && (Number(age) > -1);
 
             },
             address: () => {

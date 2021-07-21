@@ -31,13 +31,13 @@ it('create text from deserialized data obj.', () => {
     };
     modalModel.serializedData = JSON.stringify(input);
     const text = modalModel.createText();
-    expect(text.startsWith("※ご意見フォーム送信フェイク※")).toBeTruthy();
-    expect(text.includes("【氏名】" + input.name)).toBeTruthy();
-    expect(text.includes("【性別】男性")).toBeTruthy();
-    expect(text.includes("【年齢】" + input.age + "歳")).toBeTruthy();
-    expect(text.includes("【住所】" + input.address)).toBeTruthy();
-    expect(text.includes("【ご意見内容】\n" + input.message)).toBeTruthy();
-    expect(text.includes("受理日時：2021年07月20日")).toBeTruthy();
+    expect(text.startsWith("※ご意見フォーム送信フェイク※")).toBe(true);
+    expect(text.includes("【氏名】" + input.name)).toBe(true);
+    expect(text.includes("【性別】男性")).toBe(true);
+    expect(text.includes("【年齢】" + input.age + "歳")).toBe(true);
+    expect(text.includes("【住所】" + input.address)).toBe(true);
+    expect(text.includes("【ご意見内容】\n" + input.message)).toBe(true);
+    expect(text.includes("受理日時：2021年07月20日")).toBe(true);
 
 });
 it('create text blob and return object-url', () => {

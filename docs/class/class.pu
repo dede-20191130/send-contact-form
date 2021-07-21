@@ -18,8 +18,8 @@ class "FormView" as fv{
     void onSubmit()
 }
 class "FormController" as fc{
-    void onSubmit()
-    void setData(name,gender,age,address,message)
+
+    void onSubmit(name, gender, age, address, message)
     Array<String> isvalid()
     void setError(Array<String>)
 }
@@ -36,6 +36,7 @@ class "結果表示画面" as rsltSc{
 }
 class "ModalView" as mv{
     HTMLElement screen
+    HTMLElement screenCover
     HTMLElement dlBtn
     HTMLElement closeBtn
     ModalView(screen,dlBtn,closeBtn)
