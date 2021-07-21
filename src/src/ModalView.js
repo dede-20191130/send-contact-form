@@ -10,18 +10,16 @@ export class ModalView {
 
         this.dlBtn.onclick = this.download.bind(this);
         this.closeBtn.onclick = this.close.bind(this);
-
     }
     download() {
         const text = this.modalModel.createText();
-        const link = document.createElement('a');
-        link.download = '受理内容.txt';
+        const link = document.createElement("a");
+        link.download = "受理内容.txt";
         link.href = this.modalModel.createTextBlob(text);
 
         link.click();
 
         URL.revokeObjectURL(link.href);
-
     }
     close() {
         this.screen.hidden = !this.screen.hidden;

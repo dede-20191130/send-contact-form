@@ -1,4 +1,4 @@
-const moment = require('moment');
+import moment from "moment";
 
 const textTemplate = `※ご意見フォーム送信フェイク※
 下記内容で承りました。
@@ -14,7 +14,7 @@ $message
 
 受理日時：$date
 
-`
+`;
 
 export class ModalModel {
     constructor() {
@@ -35,7 +35,7 @@ export class ModalModel {
                 text = text.replace("$" + key, data[key]);
             }
         }
-        text = text.replace("$date", moment().format('YYYY年MM月DD日'));
+        text = text.replace("$date", moment().format("YYYY年MM月DD日"));
 
         return text;
     }

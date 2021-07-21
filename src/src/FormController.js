@@ -20,11 +20,11 @@ export class FormController {
             this.setError(errFounds);
             return;
         }
-        NS.modalView.modalModel.serializedData = this._formModel.createSerializedData();
+        NS.modalView.modalModel.serializedData =
+            this._formModel.createSerializedData();
         NS.modalView.screen.hidden = !NS.modalView.screen.hidden;
         NS.modalView.screenCover.hidden = !NS.modalView.screenCover.hidden;
         document.body.classList.add("preventScroll");
-
     }
     isvalid() {
         let errFounds = [];
@@ -36,6 +36,6 @@ export class FormController {
     setError(errFounds) {
         this._formView.errArea.innerHTML = errFounds.reduce((acc, curr) => {
             return acc + formErrorMessages[curr] + "<br>";
-        }, "")
+        }, "");
     }
 }

@@ -3,7 +3,7 @@ import { FormView } from "./FormView";
 import { ModalView } from "./ModalView";
 import "./style.scss";
 
-window.addEventListener("DOMContentLoaded", (ev) => {
+window.addEventListener("DOMContentLoaded", () => {
     const opinionForm = document.forms["opinion-send"];
 
     NS.formView = new FormView({
@@ -14,7 +14,7 @@ window.addEventListener("DOMContentLoaded", (ev) => {
         address: opinionForm.faddress,
         message: opinionForm.fmessage,
         submitBtn: opinionForm.fbutton,
-        errArea: document.getElementById("error-area")
+        errArea: document.getElementById("error-area"),
     });
 
     NS.modalView = new ModalView({
@@ -23,6 +23,4 @@ window.addEventListener("DOMContentLoaded", (ev) => {
         dlBtn: document.getElementById("modal-download"),
         closeBtn: document.getElementById("modal-close"),
     });
-
-
-})
+});

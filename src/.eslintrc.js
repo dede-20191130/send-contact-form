@@ -14,6 +14,7 @@ module.exports = {
         "prettier/prettier": [
             "error", {
                 "semi": true,
+                "tabWidth": 4,
             }
         ],
     }

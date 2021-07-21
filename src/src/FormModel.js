@@ -8,27 +8,24 @@ export class FormModel {
         this.isvalid = {
             name: () => {
                 let trimed = this._name.trim();
-                return (trimed.length > 0) && (trimed.length < 21)
+                return trimed.length > 0 && trimed.length < 21;
             },
             gender: () => {
                 const alloweds = [0, 1, 2];
                 return alloweds.includes(Number(this._gender));
-
             },
             age: () => {
                 if (!this._age.trim().length) return false;
                 const age = Number(this._age);
-                return Number.isInteger(age) && (Number(age) > -1);
-
+                return Number.isInteger(age) && Number(age) > -1;
             },
             address: () => {
                 let trimed = this._address.trim();
                 return trimed.length < 101;
-
             },
             message: () => {
                 let trimed = this._message.trim();
-                return (trimed.length > 0) && (trimed.length < 2001)
+                return trimed.length > 0 && trimed.length < 2001;
             },
         };
     }
@@ -40,7 +37,6 @@ export class FormModel {
             age: this._age,
             address: this._address,
             message: this._message,
-        })
+        });
     }
-
 }
