@@ -5,6 +5,7 @@ class "フォーム画面" as fmSc{
     void anonymous():初期化処理
 }
 class "FormView" as fv{
+    HTMLElement form
     HTMLElement name
     HTMLElement gender
     HTMLElement age
@@ -19,8 +20,8 @@ class "FormView" as fv{
 class "FormController" as fc{
     void onSubmit()
     void setData(name,gender,age,address,message)
-    boolean isvalid()
-    String getSerializedData()
+    Array<String> isvalid()
+    void setError(Array<String>)
 }
 class "FormModel" as fm{
     String name
@@ -32,19 +33,32 @@ class "FormModel" as fm{
     String createSerializedData()
 }
 class "結果表示画面" as rsltSc{
-    void anonymous():初期化処理
 }
-class "テキスト作成モジュール" as crtTxt{
-    String getText(serializedData)
-    void setLink(element)
+class "ModalView" as mv{
+    HTMLElement screen
+    HTMLElement dlBtn
+    HTMLElement closeBtn
+    ModalView(screen,dlBtn,closeBtn)
+    setter serializedData()
+    void download()
+    void close()
+}
+class "ModalModel" as mm{
+    String serializedData
+    String createTextBlob(text)
+    String createText()
 }
 
 fmSc "1" o-- "1" fv  : 初期化処理でインスタンス化
 fv "1" -- "1" fc  : 相互参照
 fc "1" o-- "1" fm  : contains
 
-fmSc  -  rsltSc : モーダル画面表示
-rsltSc  o-- crtTxt   : contains
+' fmSc  -  rsltSc : モーダル画面表示
+rsltSc  -- mv   : 操作
+fmSc "1" o-- "1" mv  : 初期化処理でインスタンス化
+fc  -- mv   : screen操作
+mv  "1" o-- "1" mm : contains
+
 
 
 

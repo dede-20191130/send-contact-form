@@ -1,26 +1,60 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8" />
-        <title>Webpack App</title>
-    </head>
-    <body>
-        <h1>Hello world!</h1>
-        <h2>Tip: Check your console</h2>
-    </body>
-    
-    <script>
-        if ("serviceWorker" in navigator) {
-            window.addEventListener("load", () => {
-                navigator.serviceWorker
-                    .register("service-worker.js")
-                    .then((registration) => {
-                        console.log("Service Worker registered: ", registration);
-                    })
-                    .catch((registrationError) => {
-                        console.error("Service Worker registration failed: ", registrationError);
-                    });
-            });
-        }
-    </script>
+
+<head>
+    <meta charset="utf-8" />
+    <title>ご意見フォーム</title>
+</head>
+
+<body>
+    <h2>ご意見フォーム</h2>
+    <form id="opition-send" name="opition-send" autocomplete="on">
+        <label for="fname">ご氏名:</label>
+        <input type="text" id="fname" name="fname"><br>
+        <fieldset>
+            <legend>性別</legend>
+            <ul>
+                <li>
+                    <input type="radio" id="fgender-other" name="fgender" value="0" checked>
+                    <label for="fgender-other">
+                        その他
+                    </label>
+                </li>
+                <li>
+                    <input type="radio" id="fgender-man" name="fgender" value="1">
+                    <label for="fgender-man">
+                        男性
+                    </label>
+                </li>
+                <li>
+                    <input type="radio" id="fgender-woman" name="fgender" value="2">
+                    <label for="fgender-woman">
+                        女性
+                    </label>
+                </li>
+            </ul>
+        </fieldset>
+        <label for="fage">ご年齢:</label>
+        <input type="number" id="fage" name="fage"><br>
+        <label for="faddress">ご住所:</label>
+        <input type="text" id="faddress" name="faddress"><br>
+        <label for="fmessage">ご意見:</label>
+        <textarea id="fmessage" name="fmessage" form="opition-send"></textarea>
+
+        <br><br>
+        <input id="fbutton" type="button" value="Submit">
+        <input type="reset">
+
+    </form>
+    <div id="error-area"></div>
+    <div id="modal-container" class="" hidden>
+        <div id="modal-box">
+            <div id="modal-message">ご意見を受け付けました。</div>
+            <button id="modal-download">送信内容のダウンロード</button>
+            <div id="modal-close">☓</div>
+        </div>
+    </div>
+    <div id="cover-div" class="" hidden></div>
+</body>
+
 </html>
