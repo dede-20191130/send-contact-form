@@ -1,4 +1,4 @@
-import { ModalModel } from "../src/ModalModel";
+import { ModalModel } from "../src/js/modal/ModalModel";
 
 class BlobMock {
     constructor(content, options) {

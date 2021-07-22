@@ -1,5 +1,5 @@
 import { afterEach, expect } from "@jest/globals";
-import { FormModel } from "../src/FormModel"
+import { FormModel } from "../src/js/form/FormModel"
 
 let formModel;
 

@@ -1,6 +1,6 @@
-import { FormController } from "../src/FormController";
-import { FormModel } from "../src/FormModel";
-import formErrorMessages from "../src/FormErrorMessages";
+import { FormController } from "../src/js/form/FormController";
+import { FormModel } from "../src/js/form/FormModel";
+import formErrorMessages from "../src/js/form/FormErrorMessages";
 
 let formController;
 
