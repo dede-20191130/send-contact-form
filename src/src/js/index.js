@@ -1,7 +1,7 @@
 import NS from "./NameSpace";
-import { FormView } from "./FormView";
-import { ModalView } from "./ModalView";
-import "./style.scss";
+import { FormView } from "./form/FormView";
+import { ModalView } from "./modal/ModalView";
+import "../style/style.scss";
 
 window.addEventListener("DOMContentLoaded", () => {
     const opinionForm = document.forms["opinion-send"];

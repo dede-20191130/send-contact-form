@@ -1,6 +1,6 @@
 import { FormModel } from "./FormModel";
-import formErrorMessages from "../src/FormErrorMessages";
-import NS from "../src/NameSpace";
+import formErrorMessages from "./FormErrorMessages";
+import NS from "../NameSpace";
 
 export class FormController {
     constructor({ formView }) {
