@@ -13,12 +13,13 @@ class "FormView" as fv{
     HTMLElement message
     HTMLElement submitBtn
     HTMLElement errArea
-    FormView(name,gender,age,\naddress,message,submitBtn,errArea)
+    HTMLElement modalScreen
+    Construnctor FormView(name,gender,age,\naddress,message,submitBtn,errArea,\nmodalScreen)
     void setSubmitEvt(elem)
     void onSubmit()
 }
 class "FormController" as fc{
-
+    Construnctor FormController(modalScreen)
     void onSubmit(name, gender, age, address, message)
     Array<String> isvalid()
     void setError(Array<String>)
@@ -29,6 +30,7 @@ class "FormModel" as fm{
     int age
     String address
     String message
+    Construnctor FormModel(name, gender, \nage, address, message)
     boolean isvalid"fieldName"(field)
     String createSerializedData()
 }
@@ -39,7 +41,7 @@ class "ModalView" as mv{
     HTMLElement screenCover
     HTMLElement dlBtn
     HTMLElement closeBtn
-    ModalView(screen,dlBtn,closeBtn)
+    Construnctor ModalView(screen,dlBtn,closeBtn)
     setter serializedData()
     void download()
     void close()

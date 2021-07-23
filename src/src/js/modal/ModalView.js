@@ -8,6 +8,12 @@ export class ModalView {
         this.dlBtn = dlBtn;
         this.closeBtn = closeBtn;
 
+        this.screen.addEventListener("show", (ev) => {
+            this.modalModel.serializedData = ev.detail.serializedData;
+            this.screen.hidden = !this.screen.hidden;
+            this.screenCover.hidden = !this.screenCover.hidden;
+            document.body.classList.add("preventScroll");
+        });
         this.dlBtn.onclick = this.download.bind(this);
         this.closeBtn.onclick = this.close.bind(this);
     }

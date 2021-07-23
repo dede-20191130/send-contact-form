@@ -10,8 +10,12 @@ export class FormView {
         message,
         submitBtn,
         errArea,
+        modalScreen,
     }) {
-        this.formController = new FormController({ formView: this });
+        this.formController = new FormController({
+            formView: this,
+            modalScreen: modalScreen,
+        });
         this.form = form;
         this.name = name;
         this.gender = gender;

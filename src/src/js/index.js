@@ -5,7 +5,7 @@ import "../style/style.scss";
 
 window.addEventListener("DOMContentLoaded", () => {
     const opinionForm = document.forms["opinion-send"];
-
+    const modalScreen = document.getElementById("modal-container");
     NS.formView = new FormView({
         form: opinionForm,
         name: opinionForm.fname,
@@ -15,10 +15,11 @@ window.addEventListener("DOMContentLoaded", () => {
         message: opinionForm.fmessage,
         submitBtn: opinionForm.fbutton,
         errArea: document.getElementById("error-area"),
+        modalScreen: modalScreen,
     });
 
     NS.modalView = new ModalView({
-        screen: document.getElementById("modal-container"),
+        screen: modalScreen,
         screenCover: document.getElementById("cover-div"),
         dlBtn: document.getElementById("modal-download"),
         closeBtn: document.getElementById("modal-close"),

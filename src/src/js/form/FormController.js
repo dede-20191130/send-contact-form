@@ -1,11 +1,11 @@
 import { FormModel } from "./FormModel";
 import formErrorMessages from "./FormErrorMessages";
-import NS from "../NameSpace";
 
 export class FormController {
-    constructor({ formView }) {
+    constructor({ formView, modalScreen }) {
         this._formView = formView;
         this._formModel;
+        this._modalScreen = modalScreen;
     }
     onSubmit({ name, gender, age, address, message }) {
         this._formModel = new FormModel({
@@ -20,11 +20,14 @@ export class FormController {
             this.setError(errFounds);
             return;
         }
-        NS.modalView.modalModel.serializedData =
-            this._formModel.createSerializedData();
-        NS.modalView.screen.hidden = !NS.modalView.screen.hidden;
-        NS.modalView.screenCover.hidden = !NS.modalView.screenCover.hidden;
-        document.body.classList.add("preventScroll");
+
+        this._modalScreen.dispatchEvent(
+            new CustomEvent("show", {
+                detail: {
+                    serializedData: this._formModel.createSerializedData(),
+                },
+            })
+        );
     }
     isvalid() {
         let errFounds = [];
