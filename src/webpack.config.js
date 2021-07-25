@@ -39,6 +39,7 @@ const config = {
     rules: [
       {
         test: /\.(js|jsx)$/i,
+        exclude: path.resolve(__dirname, 'node_modules'),
         loader: "babel-loader",
       },
       {
@@ -55,6 +56,7 @@ const config = {
       },
     ],
   },
+  target: ['web', 'es5'],
 };
 
 module.exports = () => {
