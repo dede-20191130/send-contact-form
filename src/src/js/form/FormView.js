@@ -26,6 +26,11 @@ export class FormView {
         this.errArea = errArea;
 
         this.setSubmitEvt(this.submitBtn);
+
+        for (const elem of [this.name, this.age, this.address, this.message]) {
+            this.setInputBoxFocusEvts(elem);
+        }
+
     }
 
     setSubmitEvt(elem) {
@@ -34,6 +39,23 @@ export class FormView {
             this.onSubmit();
         };
     }
+
+    setInputBoxFocusEvts(elem) {
+        elem.onfocus = function (ev) {
+            document
+                .querySelector(`label[for="${ev.currentTarget.id}"]`)
+                .classList.add("active");
+        };
+        elem.onblur = function (ev) {
+            if (ev.currentTarget.value === "") {
+                document
+                    .querySelector(`label[for="${ev.currentTarget.id}"]`)
+                    .classList.remove("active");
+
+            }
+        };
+    }
+
     onSubmit() {
         this.formController.onSubmit({
             name: this.name.value,

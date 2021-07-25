@@ -16,6 +16,7 @@ class "FormView" as fv{
     HTMLElement modalScreen
     Construnctor FormView(name,gender,age,\naddress,message,submitBtn,errArea,\nmodalScreen)
     void setSubmitEvt(elem)
+    void setInputBoxFocusEvts(elem)
     void onSubmit()
 }
 class "FormController" as fc{

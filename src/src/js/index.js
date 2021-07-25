@@ -14,7 +14,7 @@ window.addEventListener("DOMContentLoaded", () => {
         address: opinionForm.faddress,
         message: opinionForm.fmessage,
         submitBtn: opinionForm.fbutton,
-        errArea: document.getElementById("error-area"),
+        errArea: document.getElementById("submit-error-area"),
         modalScreen: modalScreen,
     });
 

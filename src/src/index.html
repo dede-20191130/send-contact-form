@@ -7,53 +7,65 @@
 </head>
 
 <body>
-    <div id="opinion-form-container">
-        <h2>ご意見フォーム</h2>
+    <div id="temp-page-top" style="margin-bottom: 50px;"> </div>
+    <div id="opinion-form-container" class="normal-form-container">
         <form id="opinion-send" name="opinion-send" autocomplete="on">
-            <label for="fname">ご氏名:</label>
-            <input type="text" id="fname" name="fname"><br>
-            <fieldset>
-                <legend>性別</legend>
-                <ul>
-                    <li>
-                        <input type="radio" id="fgender-other" name="fgender" value="0" checked>
-                        <label for="fgender-other">
-                            その他
-                        </label>
-                    </li>
-                    <li>
-                        <input type="radio" id="fgender-man" name="fgender" value="1">
-                        <label for="fgender-man">
-                            男性
-                        </label>
-                    </li>
-                    <li>
-                        <input type="radio" id="fgender-woman" name="fgender" value="2">
-                        <label for="fgender-woman">
-                            女性
-                        </label>
-                    </li>
-                </ul>
-            </fieldset>
-            <label for="fage">ご年齢:</label>
-            <input type="number" id="fage" name="fage"><br>
-            <label for="faddress">ご住所:</label>
-            <input type="text" id="faddress" name="faddress"><br>
-            <label for="fmessage">ご意見:</label>
-            <textarea id="fmessage" name="fmessage" form="opinion-send"></textarea>
+            <h2><span>ご意見フォーム</span></h2>
+            <div class="controls">
+                <input type="text" id="fname" name="fname">
+                <label for="fname">ご氏名:</label>
+
+            </div>
+            <div class="controls">
+
+                <fieldset>
+                    <legend>ご性別</legend>
+                    <input type="radio" id="fgender-other" name="fgender" value="0" checked>
+                    <label for="fgender-other">
+                        その他
+                    </label>
+                    <input type="radio" id="fgender-man" name="fgender" value="1">
+                    <label for="fgender-man">
+                        男性
+                    </label>
+                    <input type="radio" id="fgender-woman" name="fgender" value="2">
+                    <label for="fgender-woman">
+                        女性
+                    </label>
+                </fieldset>
+            </div>
+
+            <div class="controls">
+                <input type="number" id="fage" name="fage">
+                <label for="fage">ご年齢:</label>
+
+            </div>
+            <div class="controls">
+                <input type="text" id="faddress" name="faddress">
+                <label for="faddress">ご住所:</label>
+
+            </div>
+            <div class="controls">
+                <textarea id="fmessage" name="fmessage" form="opinion-send"></textarea>
+                <label for="fmessage">ご意見:</label>
+
+            </div>
 
             <br><br>
-            <input type="button" id="fbutton" name="fbutton" value="Submit">
-            <input type="reset">
+            <div class="controls">
+                <input type="button" id="fbutton" name="fbutton" value="Submit">
+                <input type="reset" value="Reset">
+
+            </div>
 
         </form>
-        <div id="error-area"></div>
+        <div id="submit-error-area" class="error-area"></div>
     </div>
     <div id="modal-container" class="" hidden>
         <div id="modal-box">
             <div id="modal-message">ご意見を受け付けました。</div>
             <button id="modal-download">送信内容のダウンロード</button>
-            <div id="modal-close">☓</div>
+            <div id="modal-close">✕</div>
         </div>
     </div>
     <div id="cover-div" class="" hidden></div>

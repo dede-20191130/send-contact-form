@@ -8,6 +8,8 @@ export class FormController {
         this._modalScreen = modalScreen;
     }
     onSubmit({ name, gender, age, address, message }) {
+        this._formView.errArea.innerHTML = "";
+
         this._formModel = new FormModel({
             name: name,
             gender: gender,
@@ -15,9 +17,11 @@ export class FormController {
             address: address,
             message: message,
         });
+
         let errFounds = this.isvalid();
         if (errFounds) {
             this.setError(errFounds);
+            this._formView.errArea.scrollIntoView(false);
             return;
         }
 
