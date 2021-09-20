@@ -7,6 +7,7 @@ window.addEventListener("DOMContentLoaded", () => {
     // @ts-expect-error ts-migrate(7015) FIXME: Element implicitly has an 'any' type because index... Remove this comment to see the full error message
     const opinionForm = document.forms["opinion-send"];
     const modalScreen = document.getElementById("modal-container");
+
     // @ts-expect-error ts-migrate(2322) FIXME: Type 'FormView' is not assignable to type 'null'.
     NS.formView = new FormView({
         form: opinionForm,

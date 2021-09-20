@@ -51,6 +51,7 @@ export class FormView {
 
     setInputBoxFocusEvts(elem: any) {
         elem.onfocus = function (ev: any) {
+
             // @ts-expect-error ts-migrate(2531) FIXME: Object is possibly 'null'.
             document
                 .querySelector(`label[for="${ev.currentTarget.id}"]`)
@@ -58,6 +59,7 @@ export class FormView {
         };
         elem.onblur = function (ev: any) {
             if (ev.currentTarget.value === "") {
+
                 // @ts-expect-error ts-migrate(2531) FIXME: Object is possibly 'null'.
                 document
                     .querySelector(`label[for="${ev.currentTarget.id}"]`)
