@@ -2,12 +2,24 @@ import { FormModel } from "./FormModel";
 import formErrorMessages from "./FormErrorMessages";
 
 export class FormController {
-    constructor({ formView, modalScreen }) {
+    _formModel: any;
+    _formView: any;
+    _modalScreen: any;
+    constructor({
+        formView,
+        modalScreen
+    }: any) {
         this._formView = formView;
         this._formModel;
         this._modalScreen = modalScreen;
     }
-    onSubmit({ name, gender, age, address, message }) {
+    onSubmit({
+        name,
+        gender,
+        age,
+        address,
+        message
+    }: any) {
         this._formView.errArea.innerHTML = "";
 
         this._formModel = new FormModel({
@@ -40,8 +52,9 @@ export class FormController {
         }
         return errFounds.length === 0 ? null : errFounds;
     }
-    setError(errFounds) {
-        this._formView.errArea.innerHTML = errFounds.reduce((acc, curr) => {
+    setError(errFounds: any) {
+        this._formView.errArea.innerHTML = errFounds.reduce((acc: any, curr: any) => {
+            // @ts-expect-error ts-migrate(7053) FIXME: Element implicitly has an 'any' type because expre... Remove this comment to see the full error message
             return acc + formErrorMessages[curr] + "<br>";
         }, "");
     }

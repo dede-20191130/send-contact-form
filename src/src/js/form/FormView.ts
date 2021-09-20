@@ -1,6 +1,15 @@
 import { FormController } from "./FormController";
 
 export class FormView {
+    address: any;
+    age: any;
+    errArea: any;
+    form: any;
+    formController: any;
+    gender: any;
+    message: any;
+    name: any;
+    submitBtn: any;
     constructor({
         form,
         name,
@@ -10,8 +19,8 @@ export class FormView {
         message,
         submitBtn,
         errArea,
-        modalScreen,
-    }) {
+        modalScreen
+    }: any) {
         this.formController = new FormController({
             formView: this,
             modalScreen: modalScreen,
@@ -33,21 +42,23 @@ export class FormView {
 
     }
 
-    setSubmitEvt(elem) {
-        elem.onclick = (ev) => {
+    setSubmitEvt(elem: any) {
+        elem.onclick = (ev: any) => {
             ev.preventDefault();
             this.onSubmit();
         };
     }
 
-    setInputBoxFocusEvts(elem) {
-        elem.onfocus = function (ev) {
+    setInputBoxFocusEvts(elem: any) {
+        elem.onfocus = function (ev: any) {
+            // @ts-expect-error ts-migrate(2531) FIXME: Object is possibly 'null'.
             document
                 .querySelector(`label[for="${ev.currentTarget.id}"]`)
                 .classList.add("active");
         };
-        elem.onblur = function (ev) {
+        elem.onblur = function (ev: any) {
             if (ev.currentTarget.value === "") {
+                // @ts-expect-error ts-migrate(2531) FIXME: Object is possibly 'null'.
                 document
                     .querySelector(`label[for="${ev.currentTarget.id}"]`)
                     .classList.remove("active");

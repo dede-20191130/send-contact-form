@@ -1,5 +1,17 @@
 export class FormModel {
-    constructor({ name, gender, age, address, message }) {
+    _address: any;
+    _age: any;
+    _gender: any;
+    _message: any;
+    _name: any;
+    isvalid: any;
+    constructor({
+        name,
+        gender,
+        age,
+        address,
+        message
+    }: any) {
         this._name = name;
         this._gender = gender;
         this._age = age;

@@ -1,14 +1,24 @@
 import { ModalModel } from "./ModalModel";
 
 export class ModalView {
-    constructor({ screen, screenCover, dlBtn, closeBtn }) {
+    closeBtn: any;
+    dlBtn: any;
+    modalModel: any;
+    screen: any;
+    screenCover: any;
+    constructor({
+        screen,
+        screenCover,
+        dlBtn,
+        closeBtn
+    }: any) {
         this.modalModel = new ModalModel();
         this.screen = screen;
         this.screenCover = screenCover;
         this.dlBtn = dlBtn;
         this.closeBtn = closeBtn;
 
-        this.screen.addEventListener("show", (ev) => {
+        this.screen.addEventListener("show", (ev: any) => {
             this.modalModel.serializedData = ev.detail.serializedData;
             this.screen.hidden = !this.screen.hidden;
             this.screenCover.hidden = !this.screenCover.hidden;

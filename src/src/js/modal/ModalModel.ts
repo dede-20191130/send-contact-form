@@ -17,10 +17,11 @@ $message
 `;
 
 export class ModalModel {
+    _serializedData: any;
     constructor() {
         this._serializedData = null;
     }
-    set serializedData(value) {
+    set serializedData(value: any) {
         this._serializedData = value;
     }
     createText() {
@@ -39,7 +40,7 @@ export class ModalModel {
 
         return text;
     }
-    createTextBlob(text) {
+    createTextBlob(text: any) {
         const blob = new Blob([text], { type: "text/plain" });
         return URL.createObjectURL(blob);
     }
