@@ -8,7 +8,7 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const isProduction = process.env.NODE_ENV == "production";
 
 const config = {
-  entry: "./src/js/index.js",
+  entry: "./src/ts/index.ts",
   output: {
     path: path.resolve(__dirname, "dist"),
   },
@@ -38,7 +38,7 @@ const config = {
   module: {
     rules: [
       {
-        test: /\.(js|jsx)$/i,
+        test: /\.(ts|tsx)$/i,
         exclude: path.resolve(__dirname, 'node_modules'),
         loader: "babel-loader",
       },
@@ -57,6 +57,11 @@ const config = {
     ],
   },
   target: ['web', 'es5'],
+  // resolve phrase is needed on typescript
+  // https://newbedev.com/webpack-module-not-found-error-can-t-resolve-with-relative-path
+  resolve: {
+    extensions: ['.ts', '.tsx', '...'],
+  },
 };
 
 module.exports = () => {

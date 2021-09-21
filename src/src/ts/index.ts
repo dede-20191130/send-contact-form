@@ -4,11 +4,9 @@ import { ModalView } from "./modal/ModalView";
 import "../style/style.scss";
 
 window.addEventListener("DOMContentLoaded", () => {
-    // @ts-expect-error ts-migrate(7015) FIXME: Element implicitly has an 'any' type because index... Remove this comment to see the full error message
-    const opinionForm = document.forms["opinion-send"];
-    const modalScreen = document.getElementById("modal-container");
+    const opinionForm = (document.forms as any)["opinion-send"] as HTMLFormElement;
+    const modalScreen = document.getElementById("modal-container") as HTMLDivElement;
 
-    // @ts-expect-error ts-migrate(2322) FIXME: Type 'FormView' is not assignable to type 'null'.
     NS.formView = new FormView({
         form: opinionForm,
         name: opinionForm.fname,
@@ -17,15 +15,14 @@ window.addEventListener("DOMContentLoaded", () => {
         address: opinionForm.faddress,
         message: opinionForm.fmessage,
         submitBtn: opinionForm.fbutton,
-        errArea: document.getElementById("submit-error-area"),
-        modalScreen: modalScreen,
+        errArea: document.getElementById("submit-error-area") as HTMLDivElement,
+        modalScreen: modalScreen as HTMLDivElement,
     });
 
-    // @ts-expect-error ts-migrate(2322) FIXME: Type 'ModalView' is not assignable to type 'null'.
     NS.modalView = new ModalView({
         screen: modalScreen,
-        screenCover: document.getElementById("cover-div"),
-        dlBtn: document.getElementById("modal-download"),
-        closeBtn: document.getElementById("modal-close"),
+        screenCover: document.getElementById("cover-div") as HTMLDivElement,
+        dlBtn: document.getElementById("modal-download") as HTMLButtonElement,
+        closeBtn: document.getElementById("modal-close") as HTMLDivElement,
     });
 });

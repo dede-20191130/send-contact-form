@@ -1,15 +1,28 @@
 import { FormController } from "./FormController";
 
+interface IFormViewArg {
+    address: HTMLInputElement;
+    age: HTMLInputElement;
+    errArea: HTMLDivElement;
+    form: HTMLFormElement;
+    gender: RadioNodeList;
+    message: HTMLTextAreaElement;
+    name: HTMLInputElement;
+    submitBtn: HTMLInputElement;
+    modalScreen: HTMLDivElement;
+
+}
+
 export class FormView {
-    address: any;
-    age: any;
-    errArea: any;
-    form: any;
-    formController: any;
-    gender: any;
-    message: any;
-    name: any;
-    submitBtn: any;
+    private address: HTMLInputElement;
+    private age: HTMLInputElement;
+    public errArea: HTMLDivElement;
+    private form: HTMLFormElement;
+    private formController: FormController;
+    private gender: RadioNodeList;
+    private message: HTMLTextAreaElement;
+    private name: HTMLInputElement;
+    private submitBtn: HTMLInputElement;
     constructor({
         form,
         name,
@@ -20,7 +33,7 @@ export class FormView {
         submitBtn,
         errArea,
         modalScreen
-    }: any) {
+    }: IFormViewArg) {
         this.formController = new FormController({
             formView: this,
             modalScreen: modalScreen,
@@ -42,34 +55,31 @@ export class FormView {
 
     }
 
-    setSubmitEvt(elem: any) {
-        elem.onclick = (ev: any) => {
+    private setSubmitEvt(elem: HTMLElement) {
+        elem.onclick = (ev) => {
             ev.preventDefault();
             this.onSubmit();
         };
     }
 
-    setInputBoxFocusEvts(elem: any) {
-        elem.onfocus = function (ev: any) {
-
-            // @ts-expect-error ts-migrate(2531) FIXME: Object is possibly 'null'.
+    private setInputBoxFocusEvts(elem: HTMLElement) {
+        elem.onfocus = function (ev) {
             document
-                .querySelector(`label[for="${ev.currentTarget.id}"]`)
-                .classList.add("active");
+                .querySelector(`label[for="${(ev.currentTarget as HTMLElement)?.id}"]`)
+                ?.classList.add("active");
         };
         elem.onblur = function (ev: any) {
             if (ev.currentTarget.value === "") {
 
-                // @ts-expect-error ts-migrate(2531) FIXME: Object is possibly 'null'.
                 document
-                    .querySelector(`label[for="${ev.currentTarget.id}"]`)
-                    .classList.remove("active");
+                    .querySelector(`label[for="${(ev.currentTarget as HTMLElement)?.id}"]`)
+                    ?.classList.remove("active");
 
             }
         };
     }
 
-    onSubmit() {
+    private onSubmit() {
         this.formController.onSubmit({
             name: this.name.value,
             gender: this.gender.value,

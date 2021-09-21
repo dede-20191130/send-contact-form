@@ -1,63 +1,54 @@
-// @ts-expect-error ts-migrate(2307) FIXME: Cannot find module '../src/js/form/FormController'... Remove this comment to see the full error message
-import { FormController } from "../src/js/form/FormController";
-// @ts-expect-error ts-migrate(2307) FIXME: Cannot find module '../src/js/form/FormModel' or i... Remove this comment to see the full error message
-import { FormModel } from "../src/js/form/FormModel";
-// @ts-expect-error ts-migrate(2307) FIXME: Cannot find module '../src/js/form/FormErrorMessag... Remove this comment to see the full error message
-import formErrorMessages from "../src/js/form/FormErrorMessages";
+import { FormController } from "../ts/form/FormController";
+import { FormModel } from "../ts/form/FormModel";
+import formErrorMessages from "../ts/form/FormErrorMessages";
+import { FormView } from "../ts/form/FormView";
+import { mocked } from 'ts-jest/utils';
 
 let formController;
 
-// @ts-expect-error ts-migrate(2582) FIXME: Cannot find name 'it'. Do you need to install type... Remove this comment to see the full error message
 it('isvalid method should scan all props', () => {
-    formController = new FormController({});
-    formController._formModel = new FormModel({});
-    formController._formModel.isvalid = {
-        // @ts-expect-error ts-migrate(2304) FIXME: Cannot find name 'jest'.
-        name: jest.fn(),
-        // @ts-expect-error ts-migrate(2304) FIXME: Cannot find name 'jest'.
-        gender: jest.fn(),
-        // @ts-expect-error ts-migrate(2304) FIXME: Cannot find name 'jest'.
-        age: jest.fn(),
-        // @ts-expect-error ts-migrate(2304) FIXME: Cannot find name 'jest'.
-        address: jest.fn(),
-        // @ts-expect-error ts-migrate(2304) FIXME: Cannot find name 'jest'.
-        message: jest.fn(),
-    }
+    let formView: FormView = null as unknown as FormView;
+    let modalScreen: HTMLDivElement = null as unknown as HTMLDivElement;
+
+    formController = new FormController({ formView, modalScreen });
+    formController["_formModel"] = new FormModel({ name: "", address: "", age: "", gender: "", message: "" });
+    const mockedisvalid = mocked(formController["_formModel"].isvalid, true)
+    mockedisvalid.name = jest.fn();
+    mockedisvalid.gender = jest.fn();
+    mockedisvalid.age = jest.fn();
+    mockedisvalid.address = jest.fn();
+    mockedisvalid.message = jest.fn();
     for (const prop of ["name", "gender", "age", "address", "message"]) {
-        formController._formModel.isvalid[prop].mockReturnValueOnce(true).mockReturnValueOnce(false);
+        mockedisvalid[prop].mockReturnValueOnce(true).mockReturnValueOnce(false);
     }
-    // @ts-expect-error ts-migrate(2304) FIXME: Cannot find name 'expect'.
-    expect(formController.isvalid()).toBeNull();
-    // @ts-expect-error ts-migrate(2304) FIXME: Cannot find name 'expect'.
-    expect(formController.isvalid()).toEqual(["name", "gender", "age", "address", "message"]);
+    expect(formController["isvalid"]()).toBeNull();
+    expect(formController["isvalid"]()).toEqual(["name", "gender", "age", "address", "message"]);
     for (const prop of ["name", "gender", "age", "address", "message"]) {
-        // @ts-expect-error ts-migrate(2304) FIXME: Cannot find name 'expect'.
-        expect(formController._formModel.isvalid[prop]).toHaveBeenCalledTimes(2);
+        expect(formController["_formModel"].isvalid[prop]).toHaveBeenCalledTimes(2);
     }
 
 
 });
-// @ts-expect-error ts-migrate(2582) FIXME: Cannot find name 'it'. Do you need to install type... Remove this comment to see the full error message
 it('set error showing area.', () => {
     let fv = {
         errArea: {
             textContent: ""
         }
-    };
-    formController = new FormController({ formView: fv });
+    } as FormView;
+    let modalScreen: HTMLDivElement = null as unknown as HTMLDivElement;
 
-    formController.setError(["name"]);
+    formController = new FormController({ formView: fv, modalScreen });
+
+    formController["setError"](["name"]);
     let expected = formErrorMessages["name"] + "<br>"
-    // @ts-expect-error ts-migrate(2304) FIXME: Cannot find name 'expect'.
-    expect((fv.errArea as any).innerHTML).toBe(expected);
+    expect(fv.errArea.innerHTML).toBe(expected);
 
-    formController.setError(["name", "gender", "age", "address", "message"]);
+    formController["setError"](["name", "gender", "age", "address", "message"]);
     expected = formErrorMessages["name"] + "<br>" +
         formErrorMessages["gender"] + "<br>" +
         formErrorMessages["age"] + "<br>" +
         formErrorMessages["address"] + "<br>" +
         formErrorMessages["message"] + "<br>"
-    // @ts-expect-error ts-migrate(2304) FIXME: Cannot find name 'expect'.
-    expect((fv.errArea as any).innerHTML).toBe(expected);
+    expect(fv.errArea.innerHTML).toBe(expected);
 
 });

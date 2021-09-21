@@ -1,4 +1,4 @@
-const formErrorMessage = {
+const formErrorMessage: { [p: string]: string } = {
     name: "名前は1～20文字で入力してください（必須）。",
     gender: "性別を選択してください（必須）。",
     age: "年齢を正しく入力してください（必須）。",

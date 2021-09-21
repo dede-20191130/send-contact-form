@@ -1,25 +1,31 @@
-import { FormModel } from "./FormModel";
+import { FormModel, IFormModelArg } from "./FormModel";
 import formErrorMessages from "./FormErrorMessages";
+import { FormView } from "./FormView";
+
+interface IFormControllerArg {
+    formView: FormView;
+    modalScreen: HTMLDivElement;
+};
 
 export class FormController {
-    _formModel: any;
-    _formView: any;
-    _modalScreen: any;
+    private _formModel: FormModel | undefined;
+    private _formView: FormView;
+    private _modalScreen: HTMLDivElement;
     constructor({
         formView,
         modalScreen
-    }: any) {
+    }: IFormControllerArg) {
         this._formView = formView;
         this._formModel;
         this._modalScreen = modalScreen;
     }
-    onSubmit({
+    public onSubmit({
         name,
         gender,
         age,
         address,
         message
-    }: any) {
+    }: IFormModelArg): void {
         this._formView.errArea.innerHTML = "";
 
         this._formModel = new FormModel({
@@ -45,17 +51,16 @@ export class FormController {
             })
         );
     }
-    isvalid() {
+    private isvalid() {
         let errFounds = [];
         for (const prop of ["name", "gender", "age", "address", "message"]) {
-            if (!this._formModel.isvalid[prop]()) errFounds.push(prop);
+            if (this._formModel && !this._formModel.isvalid[prop]()) errFounds.push(prop);
         }
         return errFounds.length === 0 ? null : errFounds;
     }
-    setError(errFounds: any) {
-        this._formView.errArea.innerHTML = errFounds.reduce((acc: any, curr: any) => {
+    private setError(errFounds: string[]) {
+        this._formView.errArea.innerHTML = errFounds.reduce((acc, curr) => {
 
-            // @ts-expect-error ts-migrate(7053) FIXME: Element implicitly has an 'any' type because expre... Remove this comment to see the full error message
             return acc + formErrorMessages[curr] + "<br>";
         }, "");
     }
